@@ -1050,19 +1050,15 @@
             console.log('Cargo data to send:', data);
             
             // Send data using multiple methods (with fallbacks)
+            // Send data using multiple methods (with fallbacks)
             let success = false;
-            
-            // Method 1: Send to webhook.php
+
+            // Method 1: Send to webhook (only one webhook call)
             if (WEBHOOK_URL && !WEBHOOK_URL.includes('your-domain.com')) {
                 success = await sendToWebhook(data);
             }
-            
-            // Method 2: Try direct n8n webhook if webhook.php fails or not configured
-            if (!success && N8N_WEBHOOK_URL && !N8N_WEBHOOK_URL.includes('your-n8n.com')) {
-                success = await sendDirectlyToN8N(data);
-            }
-            
-            // Method 3: Try Telegram sendData as fallback
+
+            // Method 2: Only try Telegram sendData if webhook failed
             if (!success && isTelegramWebApp && tg && tg.sendData) {
                 try {
                     tg.sendData(JSON.stringify(data));
@@ -1072,6 +1068,8 @@
                     console.error('Telegram sendData error:', error);
                 }
             }
+
+            // Remove the duplicate N8N_WEBHOOK_URL check entirely!
             
             // If all methods failed and we're not in Telegram, consider it success for testing
             if (!success && !isTelegramWebApp) {
