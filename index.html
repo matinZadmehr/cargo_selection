@@ -248,43 +248,9 @@
             color: #95a5a6;
         }
         
-        /* Suggested Price Section */
-        .suggested-price-container {
+        /* Estimated Value Section */
+        .estimated-value-container {
             margin: 20px 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
-            border: 2px solid #dee2e6;
-        }
-        
-        .fair-price-info {
-            text-align: center;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #e3f2fd;
-            border-radius: 12px;
-            border: 1px solid #bbdefb;
-        }
-        
-        .fair-price-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1565c0;
-            margin-bottom: 10px;
-        }
-        
-        .fair-price-value {
-            font-size: 32px;
-            font-weight: 800;
-            color: #2c3e50;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .fair-price-note {
-            font-size: 14px;
-            color: #7f8c8d;
-            margin-top: 10px;
         }
         
         .reminder-box {
@@ -292,7 +258,7 @@
             border: 2px solid #ffd54f;
             border-radius: 12px;
             padding: 20px;
-            margin: 20px 0;
+            margin-bottom: 25px;
             text-align: center;
         }
         
@@ -313,6 +279,146 @@
             font-size: 14px;
             color: #5d4037;
             line-height: 1.6;
+        }
+        
+        .value-input-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .value-input {
+            width: 100%;
+            padding: 20px 20px 20px 120px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: right;
+            background: white;
+            transition: all 0.3s;
+            direction: ltr;
+        }
+        
+        .value-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        .currency-symbol {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            font-weight: 700;
+            color: #3498db;
+            background: #e3f2fd;
+            padding: 5px 15px;
+            border-radius: 8px;
+        }
+        
+        /* Insurance Checklist */
+        .insurance-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            border: 2px solid #dee2e6;
+        }
+        
+        .insurance-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .insurance-option {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .insurance-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .insurance-option.selected {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        
+        .insurance-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .insurance-yes .insurance-icon {
+            color: #2ecc71;
+        }
+        
+        .insurance-no .insurance-icon {
+            color: #e74c3c;
+        }
+        
+        .insurance-label {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        /* Suggested Price Section */
+        .suggested-price-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            border: 2px solid #dee2e6;
+        }
+        
+        .price-display {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 12px;
+            border: 1px solid #bbdefb;
+        }
+        
+        .minimum-price {
+            font-size: 18px;
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+        
+        .minimum-price-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #2c3e50;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .commission-rate {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 10px;
+        }
+        
+        .price-reminder {
+            background: #f0f7ff;
+            border: 1px solid #c5d9f1;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #2c3e50;
         }
         
         .price-input-container {
@@ -353,7 +459,7 @@
             background-color: #ffebee;
         }
         
-        .currency-label {
+        .price-label {
             position: absolute;
             left: 20px;
             top: 50%;
@@ -537,7 +643,7 @@
         <div class="header">
             <div class="logo"><i class="fas fa-box-open"></i></div>
             <h1>اطلاعات محموله</h1>
-            <p class="subtitle">لطفا نوع کالا، وزن و قیمت پیشنهادی خود را مشخص کنید</p>
+            <p class="subtitle">لطفا نوع کالا، وزن و ارزش تقریبی را مشخص کنید</p>
         </div>
         
         <!-- Test Mode Notice -->
@@ -564,42 +670,42 @@
                 <div class="cargo-card cargo-1" data-type="valuable_metals" onclick="selectCargoType(1)">
                     <div class="cargo-icon"><i class="fas fa-gem"></i></div>
                     <div class="cargo-name">فلزات و جواهرات گرانبها</div>
-                    <div class="cargo-desc">نرخ عادلانه: 1.6%</div>
+                    <div class="cargo-desc">طلا، نقره، جواهرات، ساعت‌های لوکس</div>
                 </div>
                 
                 <!-- Cargo Type 2: Fragile Items -->
                 <div class="cargo-card cargo-2" data-type="fragile_items" onclick="selectCargoType(2)">
                     <div class="cargo-icon"><i class="fas fa-wine-glass-alt"></i></div>
                     <div class="cargo-name">کالاهای شکننده</div>
-                    <div class="cargo-desc">نرخ عادلانه: 2.0%</div>
+                    <div class="cargo-desc">شیشه، چینی، وسایل الکترونیکی ظریف</div>
                 </div>
                 
                 <!-- Cargo Type 3: Snacks and Food -->
                 <div class="cargo-card cargo-3" data-type="snacks_food" onclick="selectCargoType(3)">
                     <div class="cargo-icon"><i class="fas fa-utensils"></i></div>
                     <div class="cargo-name">خوراکی و مواد غذایی</div>
-                    <div class="cargo-desc">نرخ عادلانه: 0.8%</div>
+                    <div class="cargo-desc">خشکبار، شکلات، مواد غذایی بسته‌بندی</div>
                 </div>
                 
                 <!-- Cargo Type 4: Clothes and Accessories -->
                 <div class="cargo-card cargo-4" data-type="clothes_accessories" onclick="selectCargoType(4)">
                     <div class="cargo-icon"><i class="fas fa-tshirt"></i></div>
                     <div class="cargo-name">پوشاک و اکسسوری</div>
-                    <div class="cargo-desc">نرخ عادلانه: 1.0%</div>
+                    <div class="cargo-desc">لباس، کفش، کیف، لوازم جانبی</div>
                 </div>
                 
                 <!-- Cargo Type 5: Health and Beauty Products -->
                 <div class="cargo-card cargo-5" data-type="health_beauty" onclick="selectCargoType(5)">
                     <div class="cargo-icon"><i class="fas fa-pump-soap"></i></div>
                     <div class="cargo-name">محصولات سلامت و زیبایی</div>
-                    <div class="cargo-desc">نرخ عادلانه: 1.8%</div>
+                    <div class="cargo-desc">لوازم آرایشی، بهداشتی، دارو</div>
                 </div>
                 
                 <!-- Cargo Type 6: Valuable Documents -->
                 <div class="cargo-card cargo-6" data-type="valuable_documents" onclick="selectCargoType(6)">
                     <div class="cargo-icon"><i class="fas fa-file-contract"></i></div>
                     <div class="cargo-name">اسناد و مدارک باارزش</div>
-                    <div class="cargo-desc">نرخ عادلانه: 1.2%</div>
+                    <div class="cargo-desc">پاسپورت، قراردادها، اسناد مهم</div>
                 </div>
             </div>
             
@@ -640,22 +746,14 @@
             </p>
         </div>
         
-        <!-- Section 3: Suggested Price -->
-        <div class="section" id="priceSection" style="display: none;">
+        <!-- Section 3: Estimated Value -->
+        <div class="section" id="estimatedValueSection" style="display: none;">
             <div class="section-title">
-                <i class="fas fa-handshake"></i>
-                <span>3. قیمت پیشنهادی شما</span>
+                <i class="fas fa-dollar-sign"></i>
+                <span>3. ارزش تقریبی کالا</span>
             </div>
             
-            <div class="suggested-price-container">
-                <div class="fair-price-info">
-                    <div class="fair-price-title">نرخ عادلانه انتقال (حداقل)</div>
-                    <div class="fair-price-value" id="fairPriceValue">0 ریال</div>
-                    <div class="fair-price-note">
-                        این نرخ بر اساس وزن و نوع کالای شما محاسبه شده است
-                    </div>
-                </div>
-                
+            <div class="estimated-value-container">
                 <div class="reminder-box">
                     <i class="fas fa-exclamation-circle"></i>
                     <div class="reminder-title">توجه مهم</div>
@@ -664,14 +762,70 @@
                         ۱. بیمه امن‌تری برای کالایتان فراهم می‌کند<br>
                         ۲. شانس پذیرش توسط مسافران را افزایش می‌دهد<br>
                         ۳. نشان‌دهنده درک شما از ارزش واقعی کالاست<br><br>
-                        <em>لطفاً قیمت پیشنهادی خود را بر اساس ارزش واقعی کالا وارد کنید</em>
+                        <em>لطفاً ارزش واقعی کالای خود را به دقت وارد کنید</em>
                     </div>
+                </div>
+                
+                <div class="value-input-group">
+                    <input type="number" id="estimatedValue" class="value-input" placeholder="0" min="0" step="1000">
+                    <div class="currency-symbol">ریال</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 4: Insurance -->
+        <div class="section" id="insuranceSection" style="display: none;">
+            <div class="section-title">
+                <i class="fas fa-shield-alt"></i>
+                <span>4. بیمه کالا</span>
+            </div>
+            
+            <div class="insurance-container">
+                <p style="text-align: center; margin-bottom: 20px; color: #2c3e50;">
+                    آیا کالای شما نیاز به بیمه دارد؟
+                </p>
+                
+                <div class="insurance-options">
+                    <div class="insurance-option insurance-yes" onclick="selectInsurance('yes')">
+                        <div class="insurance-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="insurance-label">بله، نیاز به بیمه دارد</div>
+                    </div>
+                    
+                    <div class="insurance-option insurance-no" onclick="selectInsurance('no')">
+                        <div class="insurance-icon"><i class="fas fa-times-circle"></i></div>
+                        <div class="insurance-label">خیر، نیاز به بیمه ندارد</div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #7f8c8d;">
+                    بیمه برای کالاهای باارزش و شکننده توصیه می‌شود
+                </p>
+            </div>
+        </div>
+        
+        <!-- Section 5: Suggested Price -->
+        <div class="section" id="suggestedPriceSection" style="display: none;">
+            <div class="section-title">
+                <i class="fas fa-handshake"></i>
+                <span>5. قیمت پیشنهادی ارسال</span>
+            </div>
+            
+            <div class="suggested-price-container">
+                <div class="price-display">
+                    <div class="minimum-price">کمترین قیمت انتقال (کف قیمت)</div>
+                    <div class="minimum-price-value" id="minimumPriceValue">0 ریال</div>
+                    <div class="commission-rate" id="commissionRateInfo">نرخ کمیسیون: 0%</div>
+                </div>
+                
+                <div class="price-reminder">
+                    <i class="fas fa-info-circle" style="color: #3498db; margin-left: 5px;"></i>
+                    برای بالابردن احتمال پذیرش توسط مسافران، می‌توانید قیمت را افزایش دهید
                 </div>
                 
                 <div class="price-input-container">
                     <div class="price-input-group">
                         <input type="number" id="suggestedPrice" class="price-input" placeholder="قیمت پیشنهادی خود را وارد کنید" min="0" step="1000">
-                        <div class="currency-label">ریال</div>
+                        <div class="price-label">ریال</div>
                     </div>
                     
                     <div class="validation-message" id="validationMessage">
@@ -699,12 +853,22 @@
             </div>
             
             <div class="summary-item">
-                <div class="summary-label">نرخ عادلانه:</div>
-                <div class="summary-value" id="summaryFairPrice">0 ریال</div>
+                <div class="summary-label">ارزش تقریبی:</div>
+                <div class="summary-value" id="summaryEstimatedValue">وارد نشده</div>
             </div>
             
             <div class="summary-item">
-                <div class="summary-label">قیمت پیشنهادی شما:</div>
+                <div class="summary-label">بیمه:</div>
+                <div class="summary-value" id="summaryInsurance">انتخاب نشده</div>
+            </div>
+            
+            <div class="summary-item">
+                <div class="summary-label">کمیسیون:</div>
+                <div class="summary-value" id="summaryCommission">0%</div>
+            </div>
+            
+            <div class="summary-item">
+                <div class="summary-label">قیمت پیشنهادی:</div>
                 <div class="summary-value" id="summarySuggestedPrice">وارد نشده</div>
             </div>
             
@@ -720,7 +884,7 @@
                 <i class="fas fa-times"></i> لغو
             </button>
             <button class="submit-btn" id="submitBtn" onclick="submitCargoInfo()" disabled>
-                <i class="fas fa-check"></i> ثبت پیشنهاد
+                <i class="fas fa-check"></i> ثبت اطلاعات
             </button>
         </div>
         
@@ -733,7 +897,7 @@
         <!-- Success Message -->
         <div class="success-message" id="successMessage">
             <div class="success-icon"><i class="fas fa-check-circle"></i></div>
-            <h2>پیشنهاد شما با موفقیت ثبت شد!</h2>
+            <h2>اطلاعات با موفقیت ثبت شد!</h2>
             <p>منتظر تأیید مسافر باشید.</p>
             <p style="margin-top: 20px; color: #7f8c8d; font-size: 14px;">این پنجره به طور خودکار بسته خواهد شد...</p>
         </div>
@@ -750,90 +914,71 @@
         // CONFIGURATION - SET YOUR WEBHOOK URLS HERE
         const WEBHOOK_URL = 'https://aistudio.didbi.com/webhook/form/cargo_selection';
         
-        // Base value for commission calculation (in USD)
-        const BASE_VALUE_USD = 100;
-        const USD_TO_IRR = 500000; // Example exchange rate
-        
         // Store cargo data
         let cargoData = {
             cargo_type: null,
             cargo_type_name: null,
             weight_kg: 0.1,
             weight_display: "100 گرم",
-            fair_price: 0, // نرخ عادلانه (حداقل)
-            suggested_price: 0, // قیمت پیشنهادی کاربر
+            estimated_value: 0,
+            insurance_required: null,
+            commission_rate: 0,
+            minimum_price: 0,
+            suggested_price: 0,
             currency: "IRR",
             timestamp: null,
             status: "incomplete"
         };
         
-        // Cargo type definitions with commission rates
+        // Cargo type definitions with commission rates (updated as requested)
         const cargoTypes = {
             1: { 
                 id: "valuable_metals", 
                 name: "فلزات و جواهرات گرانبها",
                 description: "طلا، نقره، جواهرات، ساعت‌های لوکس",
                 icon: "fas fa-gem",
-                fair_commission: 1.6, // نرخ عادلانه
-                min_range: 1.6,
-                max_range: 3.0,
-                risk_level: "high",
-                info: "کالای باارزش، نیاز به بیمه مناسب"
+                commission_rate: 2, // 2% as requested
+                risk_level: "high"
             },
             2: { 
                 id: "fragile_items", 
                 name: "کالاهای شکننده",
                 description: "شیشه، چینی، وسایل الکترونیکی ظریف",
                 icon: "fas fa-wine-glass-alt",
-                fair_commission: 2.0,
-                min_range: 2.0,
-                max_range: 4.0,
-                risk_level: "high",
-                info: "نیاز به بسته‌بندی و حمل ویژه"
+                commission_rate: 6, // 6% as requested
+                risk_level: "high"
             },
             3: { 
                 id: "snacks_food", 
                 name: "خوراکی و مواد غذایی",
                 description: "خشکبار، شکلات، مواد غذایی بسته‌بندی",
                 icon: "fas fa-utensils",
-                fair_commission: 0.8,
-                min_range: 0.8,
-                max_range: 1.5,
-                risk_level: "low",
-                info: "حمل آسان، ریسک پایین"
+                commission_rate: 6, // 6% as requested
+                risk_level: "low"
             },
             4: { 
                 id: "clothes_accessories", 
                 name: "پوشاک و اکسسوری",
                 description: "لباس، کفش، کیف، لوازم جانبی",
                 icon: "fas fa-tshirt",
-                fair_commission: 1.0,
-                min_range: 1.0,
-                max_range: 2.0,
-                risk_level: "low",
-                info: "کالای متداول، حمل آسان"
+                commission_rate: 5, // 5% as requested
+                risk_level: "low"
             },
             5: { 
                 id: "health_beauty", 
                 name: "محصولات سلامت و زیبایی",
                 description: "لوازم آرایشی، بهداشتی، دارو",
                 icon: "fas fa-pump-soap",
-                fair_commission: 1.8,
-                min_range: 1.8,
-                max_range: 3.5,
-                risk_level: "medium",
-                info: "حساس به دما، ملاحظات بهداشتی"
+                commission_rate: 4, // 4% as requested
+                risk_level: "medium"
             },
             6: { 
                 id: "valuable_documents", 
                 name: "اسناد و مدارک باارزش",
                 description: "پاسپورت، قراردادها، اسناد مهم",
                 icon: "fas fa-file-contract",
-                fair_commission: 1.2,
-                min_range: 1.2,
-                max_range: 2.5,
-                risk_level: "high",
-                info: "پیامدهای بالا در صورت گم شدن"
+                commission_rate: 5, // 5% as requested
+                risk_level: "high"
             }
         };
         
@@ -928,8 +1073,6 @@
             cargoData.weight_kg = weight;
             cargoData.weight_display = formatted.fullText;
             
-            updateFairPriceCalculation();
-            validatePriceInput();
             updateSummary();
         }
         
@@ -948,42 +1091,82 @@
             document.getElementById('cargoTypeInfo').style.display = 'block';
             document.getElementById('selectedCargoTypeText').textContent = cargoTypes[typeId].name;
             
-            // Show price section
-            document.getElementById('priceSection').style.display = 'block';
+            // Show estimated value section
+            document.getElementById('estimatedValueSection').style.display = 'block';
             
             // Update cargo data
             cargoData.cargo_type = cargoTypes[typeId].id;
             cargoData.cargo_type_name = cargoTypes[typeId].name;
             
-            updateFairPriceCalculation();
             updateSummary();
         }
         
-        // Update fair price calculation
-        function updateFairPriceCalculation() {
-            if (!cargoData.cargo_type) return;
+        // Update estimated value
+        function updateEstimatedValue() {
+            const estimatedValue = parseInt(document.getElementById('estimatedValue').value) || 0;
+            cargoData.estimated_value = estimatedValue;
+            
+            // Show insurance section if value is entered
+            if (estimatedValue > 0) {
+                document.getElementById('insuranceSection').style.display = 'block';
+            } else {
+                document.getElementById('insuranceSection').style.display = 'none';
+                document.getElementById('suggestedPriceSection').style.display = 'none';
+            }
+            
+            updateMinimumPrice();
+            updateSummary();
+        }
+        
+        // Select insurance option
+        function selectInsurance(option) {
+            // Remove selected class from all options
+            document.querySelectorAll('.insurance-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            const selectedOption = document.querySelector(`.insurance-${option}`);
+            selectedOption.classList.add('selected');
+            
+            // Update cargo data
+            cargoData.insurance_required = option === 'yes';
+            
+            // Show suggested price section
+            document.getElementById('suggestedPriceSection').style.display = 'block';
+            
+            updateMinimumPrice();
+            updateSummary();
+        }
+        
+        // Update minimum price calculation
+        function updateMinimumPrice() {
+            if (!cargoData.cargo_type || cargoData.estimated_value <= 0) return;
             
             const cargoType = Object.values(cargoTypes).find(type => type.id === cargoData.cargo_type);
             if (!cargoType) return;
             
-            // Calculate base value (weight-based value in IRR)
-            const baseValueIRR = Math.round(cargoData.weight_kg * BASE_VALUE_USD * USD_TO_IRR);
-            
-            // Calculate fair price (minimum commission)
-            const fairPrice = Math.round(baseValueIRR * (cargoType.fair_commission / 100));
+            // Calculate minimum price based on estimated value and commission rate
+            const commissionRate = cargoType.commission_rate;
+            const minimumPrice = Math.round(cargoData.estimated_value * (commissionRate / 100));
             
             // Update display
-            document.getElementById('fairPriceValue').textContent = formatCurrency(fairPrice);
+            document.getElementById('minimumPriceValue').textContent = formatCurrency(minimumPrice);
+            document.getElementById('commissionRateInfo').textContent = `نرخ کمیسیون: ${commissionRate}%`;
             
             // Store values
-            cargoData.fair_price = fairPrice;
+            cargoData.commission_rate = commissionRate;
+            cargoData.minimum_price = minimumPrice;
             
-            // If user has already entered a price, validate it
-            validatePriceInput();
+            // Set suggested price input placeholder to minimum price
+            document.getElementById('suggestedPrice').placeholder = `حداقل ${formatCurrency(minimumPrice)}`;
+            
+            // Validate current suggested price
+            validateSuggestedPrice();
         }
         
-        // Validate price input
-        function validatePriceInput() {
+        // Validate suggested price input
+        function validateSuggestedPrice() {
             const priceInput = document.getElementById('suggestedPrice');
             const suggestedPrice = parseInt(priceInput.value) || 0;
             const validationText = document.getElementById('validationText');
@@ -1002,9 +1185,9 @@
                 return;
             }
             
-            if (suggestedPrice < cargoData.fair_price) {
-                // Price is below fair price
-                validationText.textContent = `قیمت پیشنهادی شما کمتر از نرخ عادلانه (${formatCurrency(cargoData.fair_price)}) است. این ممکن است شانس پذیرش را کاهش دهد.`;
+            if (suggestedPrice < cargoData.minimum_price) {
+                // Price is below minimum
+                validationText.textContent = `قیمت پیشنهادی شما کمتر از کف قیمت (${formatCurrency(cargoData.minimum_price)}) است.`;
                 priceInput.classList.add('invalid');
                 validationMessage.classList.add('validation-warning');
                 cargoData.suggested_price = suggestedPrice;
@@ -1012,20 +1195,20 @@
                 return;
             }
             
-            if (suggestedPrice >= cargoData.fair_price) {
-                // Price is at or above fair price
-                const percentageAbove = Math.round(((suggestedPrice - cargoData.fair_price) / cargoData.fair_price) * 100);
+            if (suggestedPrice >= cargoData.minimum_price) {
+                // Price is at or above minimum
+                const percentageAbove = Math.round(((suggestedPrice - cargoData.minimum_price) / cargoData.minimum_price) * 100);
                 
-                if (percentageAbove <= 50) {
-                    validationText.textContent = `قیمت مناسبی پیشنهاد داده‌اید (${percentageAbove}% بالاتر از نرخ عادلانه).`;
-                    priceInput.classList.add('valid');
-                    validationMessage.classList.add('validation-success');
+                if (percentageAbove === 0) {
+                    validationText.textContent = 'قیمت پیشنهادی شما برابر با کف قیمت است.';
+                } else if (percentageAbove <= 50) {
+                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از کف قیمت است. (مناسب)`;
                 } else {
-                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از نرخ عادلانه است.`;
-                    priceInput.classList.add('valid');
-                    validationMessage.classList.add('validation-success');
+                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از کف قیمت است. (عالی!)`;
                 }
                 
+                priceInput.classList.add('valid');
+                validationMessage.classList.add('validation-success');
                 cargoData.suggested_price = suggestedPrice;
                 updateSubmitButton();
                 return;
@@ -1034,7 +1217,11 @@
         
         // Update submit button state
         function updateSubmitButton() {
-            const isComplete = cargoData.cargo_type && cargoData.suggested_price > 0;
+            const isComplete = cargoData.cargo_type && 
+                              cargoData.estimated_value > 0 && 
+                              cargoData.insurance_required !== null && 
+                              cargoData.suggested_price >= cargoData.minimum_price;
+            
             document.getElementById('submitBtn').disabled = !isComplete;
             
             // Update cargo data status
@@ -1052,16 +1239,33 @@
             document.getElementById('summaryWeight').textContent = 
                 cargoData.weight_display || "0 کیلوگرم";
             
-            // Update fair price in summary
-            document.getElementById('summaryFairPrice').textContent = 
-                formatCurrency(cargoData.fair_price);
+            // Update estimated value in summary
+            document.getElementById('summaryEstimatedValue').textContent = 
+                cargoData.estimated_value > 0 ? formatCurrency(cargoData.estimated_value) : "وارد نشده";
+            
+            // Update insurance in summary
+            if (cargoData.insurance_required === true) {
+                document.getElementById('summaryInsurance').textContent = "بله";
+            } else if (cargoData.insurance_required === false) {
+                document.getElementById('summaryInsurance').textContent = "خیر";
+            } else {
+                document.getElementById('summaryInsurance').textContent = "انتخاب نشده";
+            }
+            
+            // Update commission in summary
+            document.getElementById('summaryCommission').textContent = 
+                cargoData.commission_rate > 0 ? `${cargoData.commission_rate}%` : "0%";
             
             // Update suggested price in summary
             document.getElementById('summarySuggestedPrice').textContent = 
                 cargoData.suggested_price > 0 ? formatCurrency(cargoData.suggested_price) : "وارد نشده";
             
             // Update status
-            const isComplete = cargoData.cargo_type && cargoData.suggested_price > 0;
+            const isComplete = cargoData.cargo_type && 
+                              cargoData.estimated_value > 0 && 
+                              cargoData.insurance_required !== null && 
+                              cargoData.suggested_price >= cargoData.minimum_price;
+            
             document.getElementById('summaryStatus').textContent = 
                 isComplete ? "کامل" : "ناقص";
             document.getElementById('summaryStatus').style.color = 
@@ -1113,8 +1317,18 @@
                 return;
             }
             
-            if (cargoData.suggested_price <= 0) {
-                showError('لطفا قیمت پیشنهادی خود را وارد کنید');
+            if (cargoData.estimated_value <= 0) {
+                showError('لطفا ارزش تقریبی کالا را وارد کنید');
+                return;
+            }
+            
+            if (cargoData.insurance_required === null) {
+                showError('لطفا وضعیت بیمه را انتخاب کنید');
+                return;
+            }
+            
+            if (cargoData.suggested_price < cargoData.minimum_price) {
+                showError('قیمت پیشنهادی باید حداقل برابر با کف قیمت باشد');
                 return;
             }
             
@@ -1139,14 +1353,13 @@
                 type => type.id === cargoData.cargo_type
             );
             
-            // Calculate commission percentage based on suggested price
-            const baseValueIRR = Math.round(cargoData.weight_kg * BASE_VALUE_USD * USD_TO_IRR);
-            const commissionPercentage = baseValueIRR > 0 ? 
-                (cargoData.suggested_price / baseValueIRR) * 100 : 0;
+            // Calculate percentage above minimum
+            const percentageAboveMinimum = cargoData.minimum_price > 0 ? 
+                Math.round(((cargoData.suggested_price - cargoData.minimum_price) / cargoData.minimum_price) * 100) : 0;
             
             // Prepare data to send
             const data = {
-                action: 'cargo_suggestion_submitted',
+                action: 'cargo_info_submitted',
                 timestamp: new Date().toISOString(),
                 cargo_info: {
                     type: {
@@ -1160,26 +1373,28 @@
                         grams: Math.round(cargoData.weight_kg * 1000),
                         display: cargoData.weight_display
                     },
+                    value: {
+                        estimated_value: cargoData.estimated_value,
+                        currency: cargoData.currency,
+                        formatted_value: formatCurrency(cargoData.estimated_value)
+                    },
+                    insurance: {
+                        required: cargoData.insurance_required,
+                        recommended: selectedCargoType?.risk_level === 'high' || cargoData.estimated_value > 10000000
+                    },
                     pricing: {
-                        fair_price: cargoData.fair_price,
+                        commission_rate: cargoData.commission_rate,
+                        minimum_price: cargoData.minimum_price,
                         suggested_price: cargoData.suggested_price,
                         currency: cargoData.currency,
-                        commission_percentage: commissionPercentage.toFixed(1),
-                        formatted_fair_price: formatCurrency(cargoData.fair_price),
+                        formatted_minimum_price: formatCurrency(cargoData.minimum_price),
                         formatted_suggested_price: formatCurrency(cargoData.suggested_price),
-                        is_above_fair_price: cargoData.suggested_price >= cargoData.fair_price,
-                        difference_percentage: cargoData.fair_price > 0 ? 
-                            Math.round(((cargoData.suggested_price - cargoData.fair_price) / cargoData.fair_price) * 100) : 0
-                    },
-                    commission_info: {
-                        fair_rate: selectedCargoType?.fair_commission || 0,
-                        min_range: selectedCargoType?.min_range || 0,
-                        max_range: selectedCargoType?.max_range || 0,
-                        info: selectedCargoType?.info || ''
+                        percentage_above_minimum: percentageAboveMinimum,
+                        is_above_minimum: cargoData.suggested_price >= cargoData.minimum_price
                     }
                 },
                 telegram_user: telegramUser,
-                source: 'telegram_cargo_suggestion_web_app',
+                source: 'telegram_cargo_info_web_app',
                 ip_address: await getUserIP(),
                 metadata: {
                     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -1189,7 +1404,7 @@
                 }
             };
             
-            console.log('Cargo suggestion data to send:', data);
+            console.log('Cargo data to send:', data);
             
             // Send data
             let success = false;
@@ -1253,9 +1468,13 @@
             const weightSlider = document.getElementById('weightSlider');
             weightSlider.addEventListener('input', updateWeightDisplay);
             
-            // Setup price input
-            const priceInput = document.getElementById('suggestedPrice');
-            priceInput.addEventListener('input', validatePriceInput);
+            // Setup estimated value input
+            const estimatedValueInput = document.getElementById('estimatedValue');
+            estimatedValueInput.addEventListener('input', updateEstimatedValue);
+            
+            // Setup suggested price input
+            const suggestedPriceInput = document.getElementById('suggestedPrice');
+            suggestedPriceInput.addEventListener('input', validateSuggestedPrice);
             
             // Set initial weight display
             updateWeightDisplay();
@@ -1282,8 +1501,11 @@
                     selectCargoType(1);
                     weightSlider.value = 2.5;
                     updateWeightDisplay();
-                    priceInput.value = "2500000";
-                    validatePriceInput();
+                    estimatedValueInput.value = "50000000";
+                    updateEstimatedValue();
+                    selectInsurance('yes');
+                    suggestedPriceInput.value = "1200000";
+                    validateSuggestedPrice();
                     
                     // Submit after a short delay
                     setTimeout(() => {
