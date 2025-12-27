@@ -283,7 +283,7 @@
         
         .value-input-group {
             position: relative;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .value-input {
@@ -316,6 +316,16 @@
             background: #e3f2fd;
             padding: 5px 15px;
             border-radius: 8px;
+        }
+        
+        .toman-display {
+            text-align: center;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #2c3e50;
         }
         
         /* Insurance Checklist */
@@ -397,11 +407,17 @@
         }
         
         .minimum-price-value {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 800;
             color: #2c3e50;
             margin: 10px 0;
             font-family: 'Courier New', monospace;
+        }
+        
+        .minimum-price-toman {
+            font-size: 20px;
+            color: #27ae60;
+            margin: 5px 0;
         }
         
         .commission-rate {
@@ -427,7 +443,7 @@
         
         .price-input-group {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         
         .price-input {
@@ -472,10 +488,20 @@
             border-radius: 8px;
         }
         
+        .price-toman-display {
+            text-align: center;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
         .validation-message {
             text-align: center;
             font-size: 14px;
-            margin-top: 10px;
+            margin-top: 15px;
             min-height: 20px;
         }
         
@@ -750,7 +776,7 @@
         <div class="section" id="estimatedValueSection" style="display: none;">
             <div class="section-title">
                 <i class="fas fa-dollar-sign"></i>
-                <span>3. ارزش تقریبی کالا</span>
+                <span>3. ارزش تقریبی کالا (ریال)</span>
             </div>
             
             <div class="estimated-value-container">
@@ -769,6 +795,10 @@
                 <div class="value-input-group">
                     <input type="number" id="estimatedValue" class="value-input" placeholder="0" min="0" step="1000">
                     <div class="currency-symbol">ریال</div>
+                </div>
+                
+                <div class="toman-display" id="estimatedValueToman">
+                    معادل: <span id="estimatedValueTomanValue">0</span> تومان
                 </div>
             </div>
         </div>
@@ -807,13 +837,14 @@
         <div class="section" id="suggestedPriceSection" style="display: none;">
             <div class="section-title">
                 <i class="fas fa-handshake"></i>
-                <span>5. قیمت پیشنهادی ارسال</span>
+                <span>5. قیمت پیشنهادی ارسال (ریال)</span>
             </div>
             
             <div class="suggested-price-container">
                 <div class="price-display">
                     <div class="minimum-price">کمترین قیمت انتقال (کف قیمت)</div>
                     <div class="minimum-price-value" id="minimumPriceValue">0 ریال</div>
+                    <div class="minimum-price-toman" id="minimumPriceToman">0 تومان</div>
                     <div class="commission-rate" id="commissionRateInfo">نرخ کمیسیون: 0%</div>
                 </div>
                 
@@ -826,6 +857,10 @@
                     <div class="price-input-group">
                         <input type="number" id="suggestedPrice" class="price-input" placeholder="قیمت پیشنهادی خود را وارد کنید" min="0" step="1000">
                         <div class="price-label">ریال</div>
+                    </div>
+                    
+                    <div class="price-toman-display" id="suggestedPriceToman">
+                        معادل: <span id="suggestedPriceTomanValue">0</span> تومان
                     </div>
                     
                     <div class="validation-message" id="validationMessage">
@@ -921,10 +956,13 @@
             weight_kg: 0.1,
             weight_display: "100 گرم",
             estimated_value: 0,
+            estimated_value_toman: 0,
             insurance_required: null,
             commission_rate: 0,
             minimum_price: 0,
+            minimum_price_toman: 0,
             suggested_price: 0,
+            suggested_price_toman: 0,
             currency: "IRR",
             timestamp: null,
             status: "incomplete"
@@ -1053,11 +1091,27 @@
             }
         }
         
-        // Format currency value
-        function formatCurrency(value) {
+        // Format currency value in Rial
+        function formatCurrencyRial(value) {
             if (!value) return "0 ریال";
             // Format Iranian Rials with commas
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " ریال";
+        }
+        
+        // Format currency value in Toman (divide by 10)
+        function formatCurrencyToman(value) {
+            if (!value) return "0 تومان";
+            // Convert Rial to Toman (1 Toman = 10 Rials)
+            const tomanValue = Math.round(value / 10);
+            return tomanValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " تومان";
+        }
+        
+        // Format currency with both Rial and Toman
+        function formatCurrencyBoth(value) {
+            if (!value) return "0 ریال (0 تومان)";
+            const rialFormatted = formatCurrencyRial(value);
+            const tomanFormatted = formatCurrencyToman(value);
+            return `${rialFormatted} (${tomanFormatted})`;
         }
         
         // Update weight display
@@ -1104,7 +1158,15 @@
         // Update estimated value
         function updateEstimatedValue() {
             const estimatedValue = parseInt(document.getElementById('estimatedValue').value) || 0;
+            const tomanValue = Math.round(estimatedValue / 10);
+            
+            // Update Toman display
+            document.getElementById('estimatedValueTomanValue').textContent = 
+                tomanValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // Update cargo data
             cargoData.estimated_value = estimatedValue;
+            cargoData.estimated_value_toman = tomanValue;
             
             // Show insurance section if value is entered
             if (estimatedValue > 0) {
@@ -1149,20 +1211,40 @@
             // Calculate minimum price based on estimated value and commission rate
             const commissionRate = cargoType.commission_rate;
             const minimumPrice = Math.round(cargoData.estimated_value * (commissionRate / 100));
+            const minimumPriceToman = Math.round(minimumPrice / 10);
             
             // Update display
-            document.getElementById('minimumPriceValue').textContent = formatCurrency(minimumPrice);
+            document.getElementById('minimumPriceValue').textContent = formatCurrencyRial(minimumPrice);
+            document.getElementById('minimumPriceToman').textContent = formatCurrencyToman(minimumPrice);
             document.getElementById('commissionRateInfo').textContent = `نرخ کمیسیون: ${commissionRate}%`;
             
             // Store values
             cargoData.commission_rate = commissionRate;
             cargoData.minimum_price = minimumPrice;
+            cargoData.minimum_price_toman = minimumPriceToman;
             
             // Set suggested price input placeholder to minimum price
-            document.getElementById('suggestedPrice').placeholder = `حداقل ${formatCurrency(minimumPrice)}`;
+            document.getElementById('suggestedPrice').placeholder = `حداقل ${formatCurrencyRial(minimumPrice)}`;
             
             // Validate current suggested price
             validateSuggestedPrice();
+        }
+        
+        // Update suggested price display
+        function updateSuggestedPriceDisplay() {
+            const suggestedPrice = parseInt(document.getElementById('suggestedPrice').value) || 0;
+            const suggestedPriceToman = Math.round(suggestedPrice / 10);
+            
+            // Update Toman display
+            document.getElementById('suggestedPriceTomanValue').textContent = 
+                suggestedPriceToman.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // Update cargo data
+            cargoData.suggested_price = suggestedPrice;
+            cargoData.suggested_price_toman = suggestedPriceToman;
+            
+            validateSuggestedPrice();
+            updateSummary();
         }
         
         // Validate suggested price input
@@ -1187,7 +1269,7 @@
             
             if (suggestedPrice < cargoData.minimum_price) {
                 // Price is below minimum
-                validationText.textContent = `قیمت پیشنهادی شما کمتر از کف قیمت (${formatCurrency(cargoData.minimum_price)}) است.`;
+                validationText.textContent = `قیمت پیشنهادی شما کمتر از کف قیمت (${formatCurrencyBoth(cargoData.minimum_price)}) است.`;
                 priceInput.classList.add('invalid');
                 validationMessage.classList.add('validation-warning');
                 cargoData.suggested_price = suggestedPrice;
@@ -1200,11 +1282,11 @@
                 const percentageAbove = Math.round(((suggestedPrice - cargoData.minimum_price) / cargoData.minimum_price) * 100);
                 
                 if (percentageAbove === 0) {
-                    validationText.textContent = 'قیمت پیشنهادی شما برابر با کف قیمت است.';
+                    validationText.textContent = `قیمت پیشنهادی شما برابر با کف قیمت است (${formatCurrencyBoth(suggestedPrice)}).`;
                 } else if (percentageAbove <= 50) {
-                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از کف قیمت است. (مناسب)`;
+                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از کف قیمت است (${formatCurrencyBoth(suggestedPrice)}).`;
                 } else {
-                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از کف قیمت است. (عالی!)`;
+                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از کف قیمت است (${formatCurrencyBoth(suggestedPrice)}). شانس پذیرش عالی!`;
                 }
                 
                 priceInput.classList.add('valid');
@@ -1241,7 +1323,7 @@
             
             // Update estimated value in summary
             document.getElementById('summaryEstimatedValue').textContent = 
-                cargoData.estimated_value > 0 ? formatCurrency(cargoData.estimated_value) : "وارد نشده";
+                cargoData.estimated_value > 0 ? formatCurrencyBoth(cargoData.estimated_value) : "وارد نشده";
             
             // Update insurance in summary
             if (cargoData.insurance_required === true) {
@@ -1258,7 +1340,7 @@
             
             // Update suggested price in summary
             document.getElementById('summarySuggestedPrice').textContent = 
-                cargoData.suggested_price > 0 ? formatCurrency(cargoData.suggested_price) : "وارد نشده";
+                cargoData.suggested_price > 0 ? formatCurrencyBoth(cargoData.suggested_price) : "وارد نشده";
             
             // Update status
             const isComplete = cargoData.cargo_type && 
@@ -1375,8 +1457,9 @@
                     },
                     value: {
                         estimated_value: cargoData.estimated_value,
+                        estimated_value_toman: cargoData.estimated_value_toman,
                         currency: cargoData.currency,
-                        formatted_value: formatCurrency(cargoData.estimated_value)
+                        formatted_value: formatCurrencyBoth(cargoData.estimated_value)
                     },
                     insurance: {
                         required: cargoData.insurance_required,
@@ -1385,10 +1468,12 @@
                     pricing: {
                         commission_rate: cargoData.commission_rate,
                         minimum_price: cargoData.minimum_price,
+                        minimum_price_toman: cargoData.minimum_price_toman,
                         suggested_price: cargoData.suggested_price,
+                        suggested_price_toman: cargoData.suggested_price_toman,
                         currency: cargoData.currency,
-                        formatted_minimum_price: formatCurrency(cargoData.minimum_price),
-                        formatted_suggested_price: formatCurrency(cargoData.suggested_price),
+                        formatted_minimum_price: formatCurrencyBoth(cargoData.minimum_price),
+                        formatted_suggested_price: formatCurrencyBoth(cargoData.suggested_price),
                         percentage_above_minimum: percentageAboveMinimum,
                         is_above_minimum: cargoData.suggested_price >= cargoData.minimum_price
                     }
@@ -1474,7 +1559,7 @@
             
             // Setup suggested price input
             const suggestedPriceInput = document.getElementById('suggestedPrice');
-            suggestedPriceInput.addEventListener('input', validateSuggestedPrice);
+            suggestedPriceInput.addEventListener('input', updateSuggestedPriceDisplay);
             
             // Set initial weight display
             updateWeightDisplay();
@@ -1505,7 +1590,7 @@
                     updateEstimatedValue();
                     selectInsurance('yes');
                     suggestedPriceInput.value = "1200000";
-                    validateSuggestedPrice();
+                    updateSuggestedPriceDisplay();
                     
                     // Submit after a short delay
                     setTimeout(() => {
