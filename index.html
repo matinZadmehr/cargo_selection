@@ -248,8 +248,8 @@
             color: #95a5a6;
         }
         
-        /* Commission Section */
-        .commission-container {
+        /* Suggested Price Section */
+        .suggested-price-container {
             margin: 20px 0;
             padding: 20px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -257,64 +257,132 @@
             border: 2px solid #dee2e6;
         }
         
-        .price-display {
+        .fair-price-info {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 12px;
+            border: 1px solid #bbdefb;
         }
         
-        .floor-price {
-            font-size: 28px;
+        .fair-price-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+        
+        .fair-price-value {
+            font-size: 32px;
             font-weight: 800;
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin: 15px 0;
             font-family: 'Courier New', monospace;
         }
         
-        .suggested-price-range {
-            font-size: 16px;
+        .fair-price-note {
+            font-size: 14px;
             color: #7f8c8d;
             margin-top: 10px;
         }
         
-        .commission-slider-container {
+        .reminder-box {
+            background: #fff8e1;
+            border: 2px solid #ffd54f;
+            border-radius: 12px;
+            padding: 20px;
             margin: 20px 0;
+            text-align: center;
         }
         
-        .commission-info {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
+        .reminder-box i {
+            color: #ff9800;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .reminder-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ef6c00;
+            margin-bottom: 10px;
+        }
+        
+        .reminder-text {
             font-size: 14px;
-            color: #856404;
+            color: #5d4037;
+            line-height: 1.6;
         }
         
-        .commission-info i {
-            color: #f39c12;
-            margin-left: 5px;
+        .price-input-container {
+            margin-top: 25px;
         }
         
-        .confirmation-box {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .price-input-group {
+            position: relative;
+            margin-bottom: 20px;
         }
         
-        .confirmation-box input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
+        .price-input {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            background: white;
+            transition: all 0.3s;
+            direction: ltr;
         }
         
-        .confirmation-label {
+        .price-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        .price-input.valid {
+            border-color: #2ecc71;
+            background-color: #f0f9f0;
+        }
+        
+        .price-input.invalid {
+            border-color: #e74c3c;
+            background-color: #ffebee;
+        }
+        
+        .currency-label {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            font-weight: 700;
+            color: #3498db;
+            background: #e3f2fd;
+            padding: 5px 15px;
+            border-radius: 8px;
+        }
+        
+        .validation-message {
+            text-align: center;
             font-size: 14px;
-            color: #155724;
+            margin-top: 10px;
+            min-height: 20px;
+        }
+        
+        .validation-success {
+            color: #2ecc71;
+        }
+        
+        .validation-warning {
+            color: #e74c3c;
+        }
+        
+        .validation-info {
+            color: #3498db;
         }
         
         /* Summary Section */
@@ -469,7 +537,7 @@
         <div class="header">
             <div class="logo"><i class="fas fa-box-open"></i></div>
             <h1>اطلاعات محموله</h1>
-            <p class="subtitle">لطفا نوع کالا، وزن و قیمت درخواستی را مشخص کنید</p>
+            <p class="subtitle">لطفا نوع کالا، وزن و قیمت پیشنهادی خود را مشخص کنید</p>
         </div>
         
         <!-- Test Mode Notice -->
@@ -496,42 +564,42 @@
                 <div class="cargo-card cargo-1" data-type="valuable_metals" onclick="selectCargoType(1)">
                     <div class="cargo-icon"><i class="fas fa-gem"></i></div>
                     <div class="cargo-name">فلزات و جواهرات گرانبها</div>
-                    <div class="cargo-desc">کمیسیون: 1.6% - 3.0%</div>
+                    <div class="cargo-desc">نرخ عادلانه: 1.6%</div>
                 </div>
                 
                 <!-- Cargo Type 2: Fragile Items -->
                 <div class="cargo-card cargo-2" data-type="fragile_items" onclick="selectCargoType(2)">
                     <div class="cargo-icon"><i class="fas fa-wine-glass-alt"></i></div>
                     <div class="cargo-name">کالاهای شکننده</div>
-                    <div class="cargo-desc">کمیسیون: 2.0% - 4.0%</div>
+                    <div class="cargo-desc">نرخ عادلانه: 2.0%</div>
                 </div>
                 
                 <!-- Cargo Type 3: Snacks and Food -->
                 <div class="cargo-card cargo-3" data-type="snacks_food" onclick="selectCargoType(3)">
                     <div class="cargo-icon"><i class="fas fa-utensils"></i></div>
                     <div class="cargo-name">خوراکی و مواد غذایی</div>
-                    <div class="cargo-desc">کمیسیون: 0.8% - 1.5%</div>
+                    <div class="cargo-desc">نرخ عادلانه: 0.8%</div>
                 </div>
                 
                 <!-- Cargo Type 4: Clothes and Accessories -->
                 <div class="cargo-card cargo-4" data-type="clothes_accessories" onclick="selectCargoType(4)">
                     <div class="cargo-icon"><i class="fas fa-tshirt"></i></div>
                     <div class="cargo-name">پوشاک و اکسسوری</div>
-                    <div class="cargo-desc">کمیسیون: 1.0% - 2.0%</div>
+                    <div class="cargo-desc">نرخ عادلانه: 1.0%</div>
                 </div>
                 
                 <!-- Cargo Type 5: Health and Beauty Products -->
                 <div class="cargo-card cargo-5" data-type="health_beauty" onclick="selectCargoType(5)">
                     <div class="cargo-icon"><i class="fas fa-pump-soap"></i></div>
                     <div class="cargo-name">محصولات سلامت و زیبایی</div>
-                    <div class="cargo-desc">کمیسیون: 1.8% - 3.5%</div>
+                    <div class="cargo-desc">نرخ عادلانه: 1.8%</div>
                 </div>
                 
                 <!-- Cargo Type 6: Valuable Documents -->
                 <div class="cargo-card cargo-6" data-type="valuable_documents" onclick="selectCargoType(6)">
                     <div class="cargo-icon"><i class="fas fa-file-contract"></i></div>
                     <div class="cargo-name">اسناد و مدارک باارزش</div>
-                    <div class="cargo-desc">کمیسیون: 1.2% - 2.5%</div>
+                    <div class="cargo-desc">نرخ عادلانه: 1.2%</div>
                 </div>
             </div>
             
@@ -572,40 +640,43 @@
             </p>
         </div>
         
-        <!-- Section 3: Requested Price -->
-        <div class="section" id="commissionSection" style="display: none;">
+        <!-- Section 3: Suggested Price -->
+        <div class="section" id="priceSection" style="display: none;">
             <div class="section-title">
-                <i class="fas fa-dollar-sign"></i>
-                <span>3. قیمت درخواستی</span>
+                <i class="fas fa-handshake"></i>
+                <span>3. قیمت پیشنهادی شما</span>
             </div>
             
-            <div class="commission-container">
-                <div class="price-display">
-                    <div class="floor-price" id="floorPrice">0 ریال</div>
-                    <div class="suggested-price-range" id="suggestedRange">
-                        محدوده پیشنهادی: 0 - 0 ریال
+            <div class="suggested-price-container">
+                <div class="fair-price-info">
+                    <div class="fair-price-title">نرخ عادلانه انتقال (حداقل)</div>
+                    <div class="fair-price-value" id="fairPriceValue">0 ریال</div>
+                    <div class="fair-price-note">
+                        این نرخ بر اساس وزن و نوع کالای شما محاسبه شده است
                     </div>
                 </div>
                 
-                <div class="commission-slider-container">
-                    <div class="slider-labels">
-                        <span id="minCommissionLabel">حداقل</span>
-                        <span>پیشنهادی</span>
-                        <span id="maxCommissionLabel">حداکثر</span>
+                <div class="reminder-box">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="reminder-title">توجه مهم</div>
+                    <div class="reminder-text">
+                        <strong>ارزش‌گذاری صحیح کالا شما:</strong><br>
+                        ۱. بیمه امن‌تری برای کالایتان فراهم می‌کند<br>
+                        ۲. شانس پذیرش توسط مسافران را افزایش می‌دهد<br>
+                        ۳. نشان‌دهنده درک شما از ارزش واقعی کالاست<br><br>
+                        <em>لطفاً قیمت پیشنهادی خود را بر اساس ارزش واقعی کالا وارد کنید</em>
                     </div>
-                    <input type="range" min="0" max="100" value="0" class="slider" id="commissionSlider">
                 </div>
                 
-                <div class="commission-info" id="commissionInfo">
-                    <i class="fas fa-info-circle"></i>
-                    <span id="commissionInfoText">لطفا ابتدا نوع کالا و وزن را انتخاب کنید</span>
-                </div>
-                
-                <div class="confirmation-box" id="confirmationBox">
-                    <input type="checkbox" id="confirmFloorPrice" onchange="toggleSubmitButton()">
-                    <label for="confirmFloorPrice" class="confirmation-label">
-                        قیمت حداقل را تایید می‌کنم و نمی‌خواهم تغییری ایجاد کنم
-                    </label>
+                <div class="price-input-container">
+                    <div class="price-input-group">
+                        <input type="number" id="suggestedPrice" class="price-input" placeholder="قیمت پیشنهادی خود را وارد کنید" min="0" step="1000">
+                        <div class="currency-label">ریال</div>
+                    </div>
+                    
+                    <div class="validation-message" id="validationMessage">
+                        <span id="validationText">قیمت پیشنهادی خود را وارد کنید</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -628,13 +699,13 @@
             </div>
             
             <div class="summary-item">
-                <div class="summary-label">کمیسیون:</div>
-                <div class="summary-value" id="summaryCommission">0%</div>
+                <div class="summary-label">نرخ عادلانه:</div>
+                <div class="summary-value" id="summaryFairPrice">0 ریال</div>
             </div>
             
             <div class="summary-item">
-                <div class="summary-label">قیمت درخواستی:</div>
-                <div class="summary-value" id="summaryPrice">0 ریال</div>
+                <div class="summary-label">قیمت پیشنهادی شما:</div>
+                <div class="summary-value" id="summarySuggestedPrice">وارد نشده</div>
             </div>
             
             <div class="summary-item" style="border-top: 2px solid #2196f3; padding-top: 20px; margin-top: 10px;">
@@ -649,7 +720,7 @@
                 <i class="fas fa-times"></i> لغو
             </button>
             <button class="submit-btn" id="submitBtn" onclick="submitCargoInfo()" disabled>
-                <i class="fas fa-check"></i> ثبت اطلاعات
+                <i class="fas fa-check"></i> ثبت پیشنهاد
             </button>
         </div>
         
@@ -662,8 +733,8 @@
         <!-- Success Message -->
         <div class="success-message" id="successMessage">
             <div class="success-icon"><i class="fas fa-check-circle"></i></div>
-            <h2>اطلاعات با موفقیت ثبت شد!</h2>
-            <p>اطلاعات محموله شما دریافت و ثبت شد.</p>
+            <h2>پیشنهاد شما با موفقیت ثبت شد!</h2>
+            <p>منتظر تأیید مسافر باشید.</p>
             <p style="margin-top: 20px; color: #7f8c8d; font-size: 14px;">این پنجره به طور خودکار بسته خواهد شد...</p>
         </div>
     </div>
@@ -689,13 +760,11 @@
             cargo_type_name: null,
             weight_kg: 0.1,
             weight_display: "100 گرم",
-            commission_percentage: 0,
-            requested_price: 0,
-            floor_price: 0,
+            fair_price: 0, // نرخ عادلانه (حداقل)
+            suggested_price: 0, // قیمت پیشنهادی کاربر
             currency: "IRR",
             timestamp: null,
-            status: "incomplete",
-            use_floor_price: false
+            status: "incomplete"
         };
         
         // Cargo type definitions with commission rates
@@ -705,72 +774,66 @@
                 name: "فلزات و جواهرات گرانبها",
                 description: "طلا، نقره، جواهرات، ساعت‌های لوکس",
                 icon: "fas fa-gem",
-                min_commission: 1.6,
-                max_commission: 3.0,
-                recommended_min: 1.6,
-                recommended_max: 2.5,
+                fair_commission: 1.6, // نرخ عادلانه
+                min_range: 1.6,
+                max_range: 3.0,
                 risk_level: "high",
-                info: "کمیسیون پایین اما ارزش بالای کالا، ریسک سرقت بالا نیاز به حق بیمه مناسب"
+                info: "کالای باارزش، نیاز به بیمه مناسب"
             },
             2: { 
                 id: "fragile_items", 
                 name: "کالاهای شکننده",
                 description: "شیشه، چینی، وسایل الکترونیکی ظریف",
                 icon: "fas fa-wine-glass-alt",
-                min_commission: 2.0,
-                max_commission: 4.0,
-                recommended_min: 2.0,
-                recommended_max: 3.0,
+                fair_commission: 2.0,
+                min_range: 2.0,
+                max_range: 4.0,
                 risk_level: "high",
-                info: "نیاز به بسته‌بندی و حمل ویژه، مسئولیت بالا"
+                info: "نیاز به بسته‌بندی و حمل ویژه"
             },
             3: { 
                 id: "snacks_food", 
                 name: "خوراکی و مواد غذایی",
                 description: "خشکبار، شکلات، مواد غذایی بسته‌بندی",
                 icon: "fas fa-utensils",
-                min_commission: 0.8,
-                max_commission: 1.5,
-                recommended_min: 0.8,
-                recommended_max: 1.2,
+                fair_commission: 0.8,
+                min_range: 0.8,
+                max_range: 1.5,
                 risk_level: "low",
-                info: "حمل آسان، ریسک پایین، کالای رایج"
+                info: "حمل آسان، ریسک پایین"
             },
             4: { 
                 id: "clothes_accessories", 
                 name: "پوشاک و اکسسوری",
                 description: "لباس، کفش، کیف، لوازم جانبی",
                 icon: "fas fa-tshirt",
-                min_commission: 1.0,
-                max_commission: 2.0,
-                recommended_min: 1.0,
-                recommended_max: 1.5,
+                fair_commission: 1.0,
+                min_range: 1.0,
+                max_range: 2.0,
                 risk_level: "low",
-                info: "حمل آسان، ریسک پایین، کالای متداول"
+                info: "کالای متداول، حمل آسان"
             },
             5: { 
                 id: "health_beauty", 
                 name: "محصولات سلامت و زیبایی",
                 description: "لوازم آرایشی، بهداشتی، دارو",
                 icon: "fas fa-pump-soap",
-                min_commission: 1.8,
-                max_commission: 3.5,
-                recommended_min: 1.8,
-                recommended_max: 2.5,
+                fair_commission: 1.8,
+                min_range: 1.8,
+                max_range: 3.5,
                 risk_level: "medium",
-                info: "حساس به دما، ملاحظات قانونی و بهداشتی"
+                info: "حساس به دما، ملاحظات بهداشتی"
             },
             6: { 
                 id: "valuable_documents", 
                 name: "اسناد و مدارک باارزش",
                 description: "پاسپورت، قراردادها، اسناد مهم",
                 icon: "fas fa-file-contract",
-                min_commission: 1.2,
-                max_commission: 2.5,
-                recommended_min: 1.2,
-                recommended_max: 2.0,
+                fair_commission: 1.2,
+                min_range: 1.2,
+                max_range: 2.5,
                 risk_level: "high",
-                info: "ارزش مادی پایین اما پیامدهای بالا در صورت گم شدن"
+                info: "پیامدهای بالا در صورت گم شدن"
             }
         };
         
@@ -847,6 +910,7 @@
         
         // Format currency value
         function formatCurrency(value) {
+            if (!value) return "0 ریال";
             // Format Iranian Rials with commas
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " ریال";
         }
@@ -864,7 +928,8 @@
             cargoData.weight_kg = weight;
             cargoData.weight_display = formatted.fullText;
             
-            updateCommissionCalculation();
+            updateFairPriceCalculation();
+            validatePriceInput();
             updateSummary();
         }
         
@@ -883,113 +948,98 @@
             document.getElementById('cargoTypeInfo').style.display = 'block';
             document.getElementById('selectedCargoTypeText').textContent = cargoTypes[typeId].name;
             
-            // Show commission section
-            document.getElementById('commissionSection').style.display = 'block';
+            // Show price section
+            document.getElementById('priceSection').style.display = 'block';
             
             // Update cargo data
             cargoData.cargo_type = cargoTypes[typeId].id;
             cargoData.cargo_type_name = cargoTypes[typeId].name;
             
-            updateCommissionCalculation();
+            updateFairPriceCalculation();
             updateSummary();
         }
         
-        // Update commission calculation
-        function updateCommissionCalculation() {
+        // Update fair price calculation
+        function updateFairPriceCalculation() {
             if (!cargoData.cargo_type) return;
             
             const cargoType = Object.values(cargoTypes).find(type => type.id === cargoData.cargo_type);
             if (!cargoType) return;
             
-            // Calculate base price (weight-based value in IRR)
+            // Calculate base value (weight-based value in IRR)
             const baseValueIRR = Math.round(cargoData.weight_kg * BASE_VALUE_USD * USD_TO_IRR);
             
-            // Calculate floor price (minimum commission)
-            const floorPrice = Math.round(baseValueIRR * (cargoType.min_commission / 100));
-            
-            // Calculate suggested max price (recommended max commission)
-            const suggestedMaxPrice = Math.round(baseValueIRR * (cargoType.recommended_max / 100));
-            
-            // Update slider range
-            const commissionSlider = document.getElementById('commissionSlider');
-            commissionSlider.min = cargoType.min_commission;
-            commissionSlider.max = cargoType.max_commission;
-            commissionSlider.value = cargoType.min_commission;
-            
-            // Update slider labels
-            document.getElementById('minCommissionLabel').textContent = `${cargoType.min_commission}%`;
-            document.getElementById('maxCommissionLabel').textContent = `${cargoType.max_commission}%`;
+            // Calculate fair price (minimum commission)
+            const fairPrice = Math.round(baseValueIRR * (cargoType.fair_commission / 100));
             
             // Update display
-            document.getElementById('floorPrice').textContent = formatCurrency(floorPrice);
-            document.getElementById('suggestedRange').textContent = 
-                `محدوده پیشنهادی: ${formatCurrency(floorPrice)} - ${formatCurrency(suggestedMaxPrice)}`;
-            
-            // Update info text
-            document.getElementById('commissionInfoText').textContent = 
-                `قیمت حداقل: ${formatCurrency(floorPrice)} - ${cargoType.info}. ` +
-                `برای شانس بیشتر در پذیرش توسط مسافر، قیمت بالاتری پیشنهاد دهید.`;
+            document.getElementById('fairPriceValue').textContent = formatCurrency(fairPrice);
             
             // Store values
-            cargoData.floor_price = floorPrice;
-            cargoData.requested_price = floorPrice;
-            cargoData.commission_percentage = cargoType.min_commission;
+            cargoData.fair_price = fairPrice;
             
-            // Reset confirmation checkbox
-            document.getElementById('confirmFloorPrice').checked = false;
-            
-            updateCommissionDisplay();
+            // If user has already entered a price, validate it
+            validatePriceInput();
         }
         
-        // Update commission slider
-        function updateCommissionDisplay() {
-            if (!cargoData.cargo_type) return;
+        // Validate price input
+        function validatePriceInput() {
+            const priceInput = document.getElementById('suggestedPrice');
+            const suggestedPrice = parseInt(priceInput.value) || 0;
+            const validationText = document.getElementById('validationText');
+            const validationMessage = document.getElementById('validationMessage');
             
-            const cargoType = Object.values(cargoTypes).find(type => type.id === cargoData.cargo_type);
-            if (!cargoType) return;
+            // Reset styling
+            priceInput.classList.remove('valid', 'invalid');
+            validationMessage.classList.remove('validation-success', 'validation-warning', 'validation-info');
             
-            const commissionSlider = document.getElementById('commissionSlider');
-            const commissionPercentage = parseFloat(commissionSlider.value);
-            
-            // Calculate base price (weight-based value in IRR)
-            const baseValueIRR = Math.round(cargoData.weight_kg * BASE_VALUE_USD * USD_TO_IRR);
-            
-            // Calculate requested price based on commission
-            const requestedPrice = Math.round(baseValueIRR * (commissionPercentage / 100));
-            
-            // Update cargo data
-            cargoData.commission_percentage = commissionPercentage;
-            cargoData.requested_price = requestedPrice;
-            
-            // Update confirmation checkbox state
-            const confirmCheckbox = document.getElementById('confirmFloorPrice');
-            const isFloorPrice = Math.abs(commissionPercentage - cargoType.min_commission) < 0.01;
-            confirmCheckbox.checked = isFloorPrice;
-            cargoData.use_floor_price = isFloorPrice;
-            
-            updateSummary();
-        }
-        
-        // Toggle submit button based on confirmation
-        function toggleSubmitButton() {
-            const confirmCheckbox = document.getElementById('confirmFloorPrice');
-            const commissionSlider = document.getElementById('commissionSlider');
-            
-            if (confirmCheckbox.checked) {
-                // Set to floor price
-                const cargoType = Object.values(cargoTypes).find(type => type.id === cargoData.cargo_type);
-                if (cargoType) {
-                    commissionSlider.value = cargoType.min_commission;
-                    updateCommissionDisplay();
-                }
-                commissionSlider.disabled = true;
-            } else {
-                commissionSlider.disabled = false;
-                updateCommissionDisplay();
+            if (suggestedPrice === 0) {
+                // No price entered
+                validationText.textContent = 'قیمت پیشنهادی خود را وارد کنید';
+                validationMessage.classList.add('validation-info');
+                cargoData.suggested_price = 0;
+                updateSubmitButton();
+                return;
             }
             
-            cargoData.use_floor_price = confirmCheckbox.checked;
-            updateSummary();
+            if (suggestedPrice < cargoData.fair_price) {
+                // Price is below fair price
+                validationText.textContent = `قیمت پیشنهادی شما کمتر از نرخ عادلانه (${formatCurrency(cargoData.fair_price)}) است. این ممکن است شانس پذیرش را کاهش دهد.`;
+                priceInput.classList.add('invalid');
+                validationMessage.classList.add('validation-warning');
+                cargoData.suggested_price = suggestedPrice;
+                updateSubmitButton();
+                return;
+            }
+            
+            if (suggestedPrice >= cargoData.fair_price) {
+                // Price is at or above fair price
+                const percentageAbove = Math.round(((suggestedPrice - cargoData.fair_price) / cargoData.fair_price) * 100);
+                
+                if (percentageAbove <= 50) {
+                    validationText.textContent = `قیمت مناسبی پیشنهاد داده‌اید (${percentageAbove}% بالاتر از نرخ عادلانه).`;
+                    priceInput.classList.add('valid');
+                    validationMessage.classList.add('validation-success');
+                } else {
+                    validationText.textContent = `قیمت پیشنهادی شما ${percentageAbove}% بالاتر از نرخ عادلانه است.`;
+                    priceInput.classList.add('valid');
+                    validationMessage.classList.add('validation-success');
+                }
+                
+                cargoData.suggested_price = suggestedPrice;
+                updateSubmitButton();
+                return;
+            }
+        }
+        
+        // Update submit button state
+        function updateSubmitButton() {
+            const isComplete = cargoData.cargo_type && cargoData.suggested_price > 0;
+            document.getElementById('submitBtn').disabled = !isComplete;
+            
+            // Update cargo data status
+            cargoData.status = isComplete ? "complete" : "incomplete";
+            cargoData.timestamp = new Date().toISOString();
         }
         
         // Update summary section
@@ -1002,27 +1052,22 @@
             document.getElementById('summaryWeight').textContent = 
                 cargoData.weight_display || "0 کیلوگرم";
             
-            // Update commission in summary
-            document.getElementById('summaryCommission').textContent = 
-                cargoData.commission_percentage ? `${cargoData.commission_percentage.toFixed(1)}%` : "0%";
+            // Update fair price in summary
+            document.getElementById('summaryFairPrice').textContent = 
+                formatCurrency(cargoData.fair_price);
             
-            // Update price in summary
-            document.getElementById('summaryPrice').textContent = 
-                cargoData.requested_price ? formatCurrency(cargoData.requested_price) : "0 ریال";
+            // Update suggested price in summary
+            document.getElementById('summarySuggestedPrice').textContent = 
+                cargoData.suggested_price > 0 ? formatCurrency(cargoData.suggested_price) : "وارد نشده";
             
             // Update status
-            const isComplete = cargoData.cargo_type && cargoData.requested_price > 0;
+            const isComplete = cargoData.cargo_type && cargoData.suggested_price > 0;
             document.getElementById('summaryStatus').textContent = 
                 isComplete ? "کامل" : "ناقص";
             document.getElementById('summaryStatus').style.color = 
                 isComplete ? "#2ecc71" : "#e74c3c";
             
-            // Enable/disable submit button
-            document.getElementById('submitBtn').disabled = !isComplete;
-            
-            // Update cargo data status
-            cargoData.status = isComplete ? "complete" : "incomplete";
-            cargoData.timestamp = new Date().toISOString();
+            updateSubmitButton();
         }
         
         // Send data to webhook
@@ -1068,8 +1113,8 @@
                 return;
             }
             
-            if (cargoData.requested_price <= 0) {
-                showError('لطفا قیمت درخواستی را تنظیم کنید');
+            if (cargoData.suggested_price <= 0) {
+                showError('لطفا قیمت پیشنهادی خود را وارد کنید');
                 return;
             }
             
@@ -1094,9 +1139,14 @@
                 type => type.id === cargoData.cargo_type
             );
             
+            // Calculate commission percentage based on suggested price
+            const baseValueIRR = Math.round(cargoData.weight_kg * BASE_VALUE_USD * USD_TO_IRR);
+            const commissionPercentage = baseValueIRR > 0 ? 
+                (cargoData.suggested_price / baseValueIRR) * 100 : 0;
+            
             // Prepare data to send
             const data = {
-                action: 'cargo_info_submitted',
+                action: 'cargo_suggestion_submitted',
                 timestamp: new Date().toISOString(),
                 cargo_info: {
                     type: {
@@ -1111,22 +1161,25 @@
                         display: cargoData.weight_display
                     },
                     pricing: {
-                        commission_percentage: cargoData.commission_percentage,
-                        requested_price: cargoData.requested_price,
-                        floor_price: cargoData.floor_price,
+                        fair_price: cargoData.fair_price,
+                        suggested_price: cargoData.suggested_price,
                         currency: cargoData.currency,
-                        use_floor_price: cargoData.use_floor_price,
-                        formatted_price: formatCurrency(cargoData.requested_price)
+                        commission_percentage: commissionPercentage.toFixed(1),
+                        formatted_fair_price: formatCurrency(cargoData.fair_price),
+                        formatted_suggested_price: formatCurrency(cargoData.suggested_price),
+                        is_above_fair_price: cargoData.suggested_price >= cargoData.fair_price,
+                        difference_percentage: cargoData.fair_price > 0 ? 
+                            Math.round(((cargoData.suggested_price - cargoData.fair_price) / cargoData.fair_price) * 100) : 0
                     },
-                    commission_range: {
-                        min: selectedCargoType?.min_commission || 0,
-                        max: selectedCargoType?.max_commission || 0,
-                        recommended_min: selectedCargoType?.recommended_min || 0,
-                        recommended_max: selectedCargoType?.recommended_max || 0
+                    commission_info: {
+                        fair_rate: selectedCargoType?.fair_commission || 0,
+                        min_range: selectedCargoType?.min_range || 0,
+                        max_range: selectedCargoType?.max_range || 0,
+                        info: selectedCargoType?.info || ''
                     }
                 },
                 telegram_user: telegramUser,
-                source: 'telegram_cargo_info_web_app',
+                source: 'telegram_cargo_suggestion_web_app',
                 ip_address: await getUserIP(),
                 metadata: {
                     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -1136,7 +1189,7 @@
                 }
             };
             
-            console.log('Cargo data to send:', data);
+            console.log('Cargo suggestion data to send:', data);
             
             // Send data
             let success = false;
@@ -1200,9 +1253,9 @@
             const weightSlider = document.getElementById('weightSlider');
             weightSlider.addEventListener('input', updateWeightDisplay);
             
-            // Setup commission slider
-            const commissionSlider = document.getElementById('commissionSlider');
-            commissionSlider.addEventListener('input', updateCommissionDisplay);
+            // Setup price input
+            const priceInput = document.getElementById('suggestedPrice');
+            priceInput.addEventListener('input', validatePriceInput);
             
             // Set initial weight display
             updateWeightDisplay();
@@ -1229,6 +1282,8 @@
                     selectCargoType(1);
                     weightSlider.value = 2.5;
                     updateWeightDisplay();
+                    priceInput.value = "2500000";
+                    validatePriceInput();
                     
                     // Submit after a short delay
                     setTimeout(() => {
